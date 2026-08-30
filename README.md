@@ -129,8 +129,7 @@ git commit -m "feat: initial production-ready AI Engineer portfolio"
 
 ### 2. Link Remote Repository and Push
 ```bash
-# Create a new repository on GitHub (e.g. 'portfolio')
-git remote add origin https://github.com/venkateswar8703/portfolio.git
+git remote add origin https://github.com/Venkateswar8703/Portfolio-Venkateswar.git
 git branch -M main
 git push -u origin main
 ```
