@@ -57,10 +57,7 @@ export function ContactForm() {
     <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8 backdrop-blur-xl">
       <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
         <div>
-          <h3 className="text-xl font-bold text-white">Send Direct Inquiry</h3>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Expect response within 24 hours
-          </p>
+          <h3 className="text-xl font-bold text-white">Contact</h3>
         </div>
         <button
           type="button"
