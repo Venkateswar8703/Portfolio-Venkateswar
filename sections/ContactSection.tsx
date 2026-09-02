@@ -4,7 +4,6 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { 
   Mail, 
-  Phone, 
   MapPin, 
   Github, 
   Linkedin, 
@@ -34,7 +33,7 @@ export function ContactSection() {
                   Contact Information
                 </h3>
                 <p className="text-xs text-slate-400">
-                  Feel free to reach out directly via email, phone, or LinkedIn.
+                  Feel free to reach out directly via email or LinkedIn.
                 </p>
               </div>
 
@@ -52,23 +51,6 @@ export function ContactSection() {
                     </span>
                     <span className="text-sm font-semibold text-white group-hover:text-sky-300 transition-colors truncate block">
                       {PERSONAL_INFO.email}
-                    </span>
-                  </div>
-                </a>
-
-                <a
-                  href={`tel:${PERSONAL_INFO.phone}`}
-                  className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80 hover:border-sky-500/40 hover:bg-slate-950 transition-all group"
-                >
-                  <div className="p-2.5 rounded-lg bg-emerald-950/60 border border-emerald-800/40 text-emerald-400 group-hover:scale-105 transition-transform">
-                    <Phone className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block">
-                      Phone / WhatsApp
-                    </span>
-                    <span className="text-sm font-semibold text-white group-hover:text-emerald-300 transition-colors">
-                      {PERSONAL_INFO.phone}
                     </span>
                   </div>
                 </a>

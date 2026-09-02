@@ -58,14 +58,12 @@ export const PERSONAL_INFO = {
     "I am an AI Engineer with a mathematics background from NIT Warangal. I build production-oriented Generative AI applications that transform text, documents, speech, images, and video into useful intelligent workflows. My work spans RAG, vector search, LLM orchestration, agentic systems, multimodal processing, APIs, and deployment.",
   location: "Warangal, Telangana, India",
   email: "venkateswar8703@gmail.com",
-  phone: "+91-8367056548",
   resumePath: "/resume.pdf",
   socials: {
     github: "https://github.com/Venkateswar8703",
     linkedin: "https://www.linkedin.com/in/bapuram-venkateswar-reddy-915420228/",
     deepml: "https://deepml.com",
     email: "mailto:venkateswar8703@gmail.com",
-    phone: "tel:+918367056548",
   },
   heroTechTags: [
     "Python",

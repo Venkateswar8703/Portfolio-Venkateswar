@@ -70,7 +70,7 @@ async function createResume() {
   });
   y -= 13;
 
-  const contactLine = "Email: venkateswar8703@gmail.com | Phone: +91-8367056548 | Location: Warangal, Telangana, India";
+  const contactLine = "Email: venkateswar8703@gmail.com | Location: Warangal, Telangana, India";
   page.drawText(contactLine, {
     x: marginX,
     y: y,
