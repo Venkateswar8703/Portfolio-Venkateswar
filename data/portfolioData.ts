@@ -56,7 +56,6 @@ export const PERSONAL_INFO = {
     "AI Engineer focused on Generative AI, RAG pipelines, agentic workflows, multimodal AI, and scalable backend systems.",
   aboutText:
     "I am an AI Engineer with a mathematics background from NIT Warangal. I build production-oriented Generative AI applications that transform text, documents, speech, images, and video into useful intelligent workflows. My work spans RAG, vector search, LLM orchestration, agentic systems, multimodal processing, APIs, and deployment.",
-  location: "Kurukshetra, Haryana, India",
   email: "venkateswar8703@gmail.com",
   resumePath: "/resume.pdf",
   socials: {
