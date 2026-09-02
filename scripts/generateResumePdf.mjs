@@ -70,7 +70,7 @@ async function createResume() {
   });
   y -= 13;
 
-  const contactLine = "Email: venkateswar8703@gmail.com | Location: Warangal, Telangana, India";
+  const contactLine = "Email: venkateswar8703@gmail.com | Location: Kurukshetra, Haryana, India";
   page.drawText(contactLine, {
     x: marginX,
     y: y,
