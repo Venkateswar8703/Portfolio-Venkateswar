@@ -92,7 +92,7 @@ export function ContactForm() {
 
           <div>
             <label htmlFor="email" className="block text-xs font-mono text-slate-300 mb-1.5">
-              Work Email <span className="text-sky-400">*</span>
+              Email <span className="text-sky-400">*</span>
             </label>
             <input
               id="email"
@@ -100,7 +100,7 @@ export function ContactForm() {
               required
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              placeholder="alex@company.com"
+              placeholder="alex@example.com"
               className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors"
             />
           </div>
