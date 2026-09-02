@@ -4,7 +4,6 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { ContactForm } from "@/components/ContactForm";
 import { 
   Mail, 
-  MapPin, 
   Github, 
   Linkedin, 
   FileText, 
@@ -54,20 +53,6 @@ export function ContactSection() {
                     </span>
                   </div>
                 </a>
-
-                <div className="flex items-center gap-3 p-3.5 rounded-xl bg-slate-950/70 border border-slate-800/80">
-                  <div className="p-2.5 rounded-lg bg-indigo-950/60 border border-indigo-800/40 text-indigo-400">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 block">
-                      Location
-                    </span>
-                    <span className="text-sm font-semibold text-white">
-                      {PERSONAL_INFO.location}
-                    </span>
-                  </div>
-                </div>
               </div>
 
               {/* Social Channels */}
