@@ -1,6 +1,6 @@
 import React from "react";
 import { PERSONAL_INFO, NAV_LINKS } from "@/data/portfolioData";
-import { Github, Linkedin, Mail, Phone, ArrowUp, Sparkles } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Sparkles } from "lucide-react";
 
 export function Footer() {
   return (
@@ -73,13 +73,6 @@ export function Footer() {
               aria-label="Email Contact"
             >
               <Mail className="w-4 h-4" />
-            </a>
-            <a
-              href={`tel:${PERSONAL_INFO.phone}`}
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 transition-colors"
-              aria-label="Phone Contact"
-            >
-              <Phone className="w-4 h-4" />
             </a>
           </div>
           <p className="text-[11px] text-slate-400 font-mono">
