@@ -4,6 +4,7 @@ import { PERSONAL_INFO } from "@/data/portfolioData";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { BackgroundGrid } from "@/components/BackgroundGrid";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export const viewport: Viewport = {
   themeColor: "#070a12",
@@ -71,6 +72,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body className="bg-[#070a12] text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-sky-500/30 selection:text-sky-200">
+        <ScrollProgress />
         <BackgroundGrid />
         <Navbar />
         <main className="flex-1 relative z-10">{children}</main>

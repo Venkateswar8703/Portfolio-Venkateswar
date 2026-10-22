@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2, Mail, Copy, Check } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
+import { SpotlightCard } from "@/components/SpotlightCard";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({
@@ -40,7 +42,6 @@ export function ContactForm() {
         setResponseMessage(data.message || "Message sent successfully!");
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else if (res.status === 503 || data.code === "UNCONFIGURED_EMAIL_PROVIDER") {
-        // Honest notification that Resend API key is not configured yet
         setStatus("unconfigured");
         setResponseMessage(data.message);
       } else {
@@ -54,20 +55,23 @@ export function ContactForm() {
   };
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8 backdrop-blur-xl">
+    <SpotlightCard className="p-6 sm:p-8">
       <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
         <div>
-          <h3 className="text-xl font-bold text-white">Reach Out to Venkateswar</h3>
+          <h3 className="text-xl font-bold text-white tracking-tight">Direct Transmission</h3>
+          <p className="text-xs text-slate-400 mt-0.5">Send a project briefing or interview inquiry</p>
         </div>
-        <button
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           type="button"
           onClick={handleCopyEmail}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 bg-slate-800 hover:bg-slate-700 transition-colors border border-slate-700"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono text-slate-300 bg-slate-800/80 hover:bg-slate-700 transition-colors border border-slate-700/80 shadow-sm"
           title="Copy Email Address"
         >
-          {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+          {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-sky-400" />}
           <span>{copiedEmail ? "Copied" : "Copy Email"}</span>
-        </button>
+        </motion.button>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -83,7 +87,7 @@ export function ContactForm() {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               placeholder="e.g. Alex Morgan"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all outline-none"
             />
           </div>
 
@@ -98,7 +102,7 @@ export function ContactForm() {
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="alex@example.com"
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all outline-none"
             />
           </div>
         </div>
@@ -114,7 +118,7 @@ export function ContactForm() {
             value={formData.subject}
             onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
             placeholder="AI Engineering Role / Project Collaboration"
-            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all outline-none"
           />
         </div>
 
@@ -129,53 +133,72 @@ export function ContactForm() {
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             placeholder="Describe the opportunity, scope, or technical challenge..."
-            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-colors resize-none"
+            className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-sm text-white placeholder-slate-500 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 transition-all outline-none resize-none"
           />
         </div>
 
-        {/* Status Alerts */}
-        {status === "success" && (
-          <div className="p-3.5 rounded-xl bg-emerald-950/60 border border-emerald-500/50 flex items-start gap-2.5 text-xs text-emerald-300">
-            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold">Message Delivered!</p>
-              <p className="mt-0.5 text-slate-300">{responseMessage}</p>
-            </div>
-          </div>
-        )}
+        {/* Status Alerts with AnimatePresence */}
+        <AnimatePresence>
+          {status === "success" && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="p-3.5 rounded-xl bg-emerald-950/70 border border-emerald-500/50 flex items-start gap-2.5 text-xs text-emerald-300 shadow-sm"
+            >
+              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Message Delivered!</p>
+                <p className="mt-0.5 text-slate-300">{responseMessage}</p>
+              </div>
+            </motion.div>
+          )}
 
-        {status === "unconfigured" && (
-          <div className="p-3.5 rounded-xl bg-amber-950/60 border border-amber-500/50 flex items-start gap-2.5 text-xs text-amber-200">
-            <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold">Notice: Production Mailer in Demo Mode</p>
-              <p className="mt-0.5 text-slate-300">
-                {responseMessage} Direct email link:{" "}
-                <a
-                  href={`mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject || "AI Engineering Opportunity")}&body=${encodeURIComponent(formData.message)}`}
-                  className="text-sky-400 underline font-semibold hover:text-sky-300"
-                >
-                  Click here to email {PERSONAL_INFO.email}
-                </a>
-              </p>
-            </div>
-          </div>
-        )}
+          {status === "unconfigured" && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="p-3.5 rounded-xl bg-amber-950/70 border border-amber-500/50 flex items-start gap-2.5 text-xs text-amber-200 shadow-sm"
+            >
+              <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Notice: Production Mailer in Demo Mode</p>
+                <p className="mt-0.5 text-slate-300">
+                  {responseMessage} Direct email link:{" "}
+                  <a
+                    href={`mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject || "AI Engineering Opportunity")}&body=${encodeURIComponent(formData.message)}`}
+                    className="text-sky-400 underline font-semibold hover:text-sky-300"
+                  >
+                    Click here to email {PERSONAL_INFO.email}
+                  </a>
+                </p>
+              </div>
+            </motion.div>
+          )}
 
-        {status === "error" && (
-          <div className="p-3.5 rounded-xl bg-red-950/60 border border-red-500/50 flex items-start gap-2.5 text-xs text-red-300">
-            <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold">Submission Issue</p>
-              <p className="mt-0.5 text-slate-300">{responseMessage}</p>
-            </div>
-          </div>
-        )}
+          {status === "error" && (
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              className="p-3.5 rounded-xl bg-red-950/70 border border-red-500/50 flex items-start gap-2.5 text-xs text-red-300 shadow-sm"
+            >
+              <AlertCircle className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
+              <div>
+                <p className="font-semibold">Submission Issue</p>
+                <p className="mt-0.5 text-slate-300">{responseMessage}</p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           type="submit"
           disabled={status === "loading"}
-          className="w-full py-3 px-6 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 px-6 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 transition-all flex items-center justify-center gap-2 shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {status === "loading" ? (
             <>
@@ -188,8 +211,8 @@ export function ContactForm() {
               <span>Send Message</span>
             </>
           )}
-        </button>
+        </motion.button>
       </form>
-    </div>
+    </SpotlightCard>
   );
 }
