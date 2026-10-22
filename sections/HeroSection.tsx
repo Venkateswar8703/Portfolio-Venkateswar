@@ -16,13 +16,12 @@ import {
 } from "lucide-react";
 
 const ROTATING_PHRASES = [
-  "LangGraph Multi-Agent Orchestration",
-  "Production RAG & Dense Retrieval",
-  "Low-Latency Async FastAPI Backends",
-  "Multimodal Audio & Video AI",
-  "Quantitative & Algorithmic Rigor",
+  "from models to production.",
+  "with LangGraph multi-agent loops.",
+  "powered by production RAG.",
+  "with low-latency async FastAPI.",
+  "grounded in mathematical rigor.",
 ];
-
 
 export function HeroSection() {
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -77,49 +76,36 @@ export function HeroSection() {
               <span className="font-semibold tracking-wide">AI ENGINEER & SYSTEM ARCHITECT</span>
             </motion.div>
 
-            {/* Main Headline */}
+            {/* Main Headline with Dynamic Rotating Suffix */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.12]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.15]"
             >
-              Building intelligent systems{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400 block sm:inline">
-                from models to production.
-              </span>
-            </motion.h1>
-
-            {/* Dynamic Rotating Specialization Sub-bar */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-xs sm:text-sm font-mono text-slate-300 backdrop-blur-md shadow-inner"
-            >
-              <span className="text-sky-400 font-semibold flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-sky-400" />
-                <span>active_focus:</span>
-              </span>
-              <div className="h-5 flex items-center">
+              <span>Building intelligent systems </span>
+              <span className="block mt-1 sm:mt-2 min-h-[2.4em] sm:min-h-[1.35em]">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={phraseIndex}
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    transition={{ duration: 0.25 }}
-                    className="text-sky-300 font-medium"
+                    exit={{ opacity: 0, y: -14 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400 pb-1"
                   >
                     {ROTATING_PHRASES[phraseIndex]}
                   </motion.span>
                 </AnimatePresence>
-              </div>
-            </motion.div>
+              </span>
+            </motion.h1>
 
             {/* Supporting Text */}
             <motion.p
               variants={itemVariants}
-              className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal"
+              className="mt-6 sm:mt-8 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal"
             >
               {PERSONAL_INFO.supportingText}
             </motion.p>
+
 
 
             {/* Key Value Proposition Callout */}
