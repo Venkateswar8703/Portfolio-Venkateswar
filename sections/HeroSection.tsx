@@ -16,12 +16,13 @@ import {
 } from "lucide-react";
 
 const ROTATING_PHRASES = [
-  "from models to production.",
-  "with LangGraph multi-agent loops.",
-  "powered by production RAG.",
-  "with low-latency async FastAPI.",
-  "grounded in mathematical rigor.",
+  "LangGraph Multi-Agent Orchestration",
+  "Production RAG & Dense Retrieval",
+  "Low-Latency Async FastAPI Backends",
+  "Multimodal Audio & Video AI",
+  "Quantitative & Algorithmic Rigor",
 ];
+
 
 export function HeroSection() {
   const [phraseIndex, setPhraseIndex] = useState(0);
@@ -76,27 +77,41 @@ export function HeroSection() {
               <span className="font-semibold tracking-wide">AI ENGINEER & SYSTEM ARCHITECT</span>
             </motion.div>
 
-            {/* Main Headline with Dynamic Rotating Suffix */}
+            {/* Main Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.12]"
             >
               Building intelligent systems{" "}
-              <span className="block h-[1.3em] overflow-hidden mt-1">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400 block sm:inline">
+                from models to production.
+              </span>
+            </motion.h1>
+
+            {/* Dynamic Rotating Specialization Sub-bar */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-xs sm:text-sm font-mono text-slate-300 backdrop-blur-md shadow-inner"
+            >
+              <span className="text-sky-400 font-semibold flex items-center gap-1.5">
+                <Zap className="w-3.5 h-3.5 text-sky-400" />
+                <span>active_focus:</span>
+              </span>
+              <div className="h-5 flex items-center">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={phraseIndex}
-                    initial={{ y: 28, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -28, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400"
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.25 }}
+                    className="text-sky-300 font-medium"
                   >
                     {ROTATING_PHRASES[phraseIndex]}
                   </motion.span>
                 </AnimatePresence>
-              </span>
-            </motion.h1>
+              </div>
+            </motion.div>
 
             {/* Supporting Text */}
             <motion.p
@@ -105,6 +120,7 @@ export function HeroSection() {
             >
               {PERSONAL_INFO.supportingText}
             </motion.p>
+
 
             {/* Key Value Proposition Callout */}
             <motion.div
