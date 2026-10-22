@@ -15,24 +15,7 @@ import {
   Zap
 } from "lucide-react";
 
-const ROTATING_PHRASES = [
-  "from models to production.",
-  "with LangGraph multi-agent loops.",
-  "powered by production RAG.",
-  "with low-latency async FastAPI.",
-  "grounded in mathematical rigor.",
-];
-
 export function HeroSection() {
-  const [phraseIndex, setPhraseIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPhraseIndex((prev) => (prev + 1) % ROTATING_PHRASES.length);
-    }, 3800);
-    return () => clearInterval(interval);
-  }, []);
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -76,35 +59,25 @@ export function HeroSection() {
               <span className="font-semibold tracking-wide">AI ENGINEER & SYSTEM ARCHITECT</span>
             </motion.div>
 
-            {/* Main Headline with Dynamic Rotating Suffix */}
+            {/* Main Headline */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight sm:leading-[1.15]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]"
             >
-              <span>Building intelligent systems </span>
-              <span className="block mt-1 sm:mt-2 min-h-[2.4em] sm:min-h-[1.35em]">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={phraseIndex}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -14 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400 pb-1"
-                  >
-                    {ROTATING_PHRASES[phraseIndex]}
-                  </motion.span>
-                </AnimatePresence>
+              Building intelligent systems{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400">
+                from models to production.
               </span>
             </motion.h1>
 
             {/* Supporting Text */}
             <motion.p
               variants={itemVariants}
-              className="mt-6 sm:mt-8 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal"
+              className="mt-5 text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl font-normal"
             >
               {PERSONAL_INFO.supportingText}
             </motion.p>
+
 
 
 

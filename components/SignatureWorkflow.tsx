@@ -363,7 +363,7 @@ export function SignatureWorkflow() {
           <Activity className="w-3 h-3 text-sky-400" />
           <span>Interactive state visualizer</span>
         </span>
-        <span className="text-sky-400/80 font-semibold">LangGraph • FAISS • FastAPI</span>
+        <span className="text-sky-400/90 font-semibold">LangGraph • RAG Pipelines • FastAPI</span>
       </div>
     </div>
   );
