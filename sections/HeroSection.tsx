@@ -65,7 +65,7 @@ export function HeroSection() {
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]"
             >
               Building intelligent systems{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-purple-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 via-cyan-300 to-purple-400 bg-[length:200%_auto] animate-flow">
                 from models to production.
               </span>
             </motion.h1>

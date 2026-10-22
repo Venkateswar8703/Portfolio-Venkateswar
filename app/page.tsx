@@ -1,5 +1,6 @@
 import React from "react";
 import { HeroSection } from "@/sections/HeroSection";
+import { TechMarquee } from "@/components/TechMarquee";
 import { AboutSection } from "@/sections/AboutSection";
 import { ExperienceSection } from "@/sections/ExperienceSection";
 import { ProjectsSection } from "@/sections/ProjectsSection";
@@ -12,6 +13,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col space-y-12 sm:space-y-16">
       <HeroSection />
+      <TechMarquee />
       <AboutSection />
       <ExperienceSection />
       <ProjectsSection />
