@@ -78,10 +78,8 @@ export function HeroSection() {
               {PERSONAL_INFO.supportingText}
             </motion.p>
 
-
-
-
             {/* Key Value Proposition Callout */}
+
             <motion.div
               variants={itemVariants}
               className="mt-5 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/90 text-xs sm:text-sm text-slate-300 flex items-center gap-3 max-w-xl backdrop-blur-sm shadow-inner"
